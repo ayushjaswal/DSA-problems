@@ -1,14 +1,20 @@
-class Solution(object):
-    def intersect(self, nums1, nums2):
-        """
-        :type nums1: List[int]
-        :type nums2: List[int]
-        :rtype: List[int]
-        """
-        lst = []
-        for i in range(len(nums1)):
-            if nums1[i] in nums2:
-                nums2.remove(nums1[i])
-                lst.append(nums1[i])
+class Solution
+{
+public:
+    vector<int> intersect(vector<int> &nums1, vector<int> &nums2)
+    {
+        vector<int> s;
 
-        return lst
+        for (int i = 0; i < nums1.size(); i++)
+        {
+            if (count(nums2.begin(), nums2.end(), nums1[i]))
+            {
+                auto it = find(nums2.begin(), nums2.end(), nums1[i]);
+                s.push_back(nums1[i]);
+                nums2.erase(it);
+            }
+        }
+
+        return s;
+    }
+};
